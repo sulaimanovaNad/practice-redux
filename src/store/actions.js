@@ -1,8 +1,13 @@
-import * as actions from './actionTypes'; 
+export const addTodo = (text) => {
+    return {
+        type: 'ADD_TODO',
+        payload: {text}
+    }
+}
 
-export const addUser = user => ({
-  type: actions.ADD_USER,
-  payload: user
-})
-
-
+export const removeTodo = (id) => {
+    return {
+        type: 'REMOVE_TODO',
+        payload: {id}
+    }
+}

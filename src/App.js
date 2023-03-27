@@ -1,23 +1,16 @@
-import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux'
-import './App.css';
-import Form from './component/Form';
+import React from 'react';
+import TodoForm from './component/TodoForm';
+import TodoList from './component/TodoList';
+import { useDispatch, useSelector } from 'react-redux';
+import { addTodo } from './store/actions';
 
-
-function App(){
-  const users = useSelector(store => store.users)
-  console.log(users)
-  // useEffect(() => {
-  //   fetch('http://127.0.0.1:8000/api/')
-  //   .then((res) => res.json())
-  //   .then((data) => {
-  //     console.log(data)
-  //   })
-  // })
-
+function App() {
+  const todos = useSelector((state) => state)
+  const dispatch = useDispatch()
   return (
-    <div>
-      <Form/>
+    <div className='container p-3 w-50'>
+      <TodoForm onAddTodo={(text) => dispatch(addTodo(text))}/>
+      <TodoList todos={todos}/>
     </div>
   )
 }
